@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/ppklau/netdraw/schemas/logical_links.schema.json",
+  "title": "NetDraw logical_links.yml",
+  "type": "object",
+  "required": ["logical_links"],
+  "additionalProperties": false,
+  "properties": {
+    "logical_links": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/LogicalLink" }
+    }
+  },
+  "$defs": {
+    "LogicalLink": {
+      "type": "object",
+      "required": ["a_end", "z_end", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "a_end":    { "type": "string", "minLength": 1 },
+        "z_end":    { "type": "string", "minLength": 1 },
+        "kind":     { "type": "string", "enum": ["logical", "derived"] },
+        "role":     { "type": "string" },
+        "protocol": { "type": "string" },
+        "source":   { "type": "string", "enum": ["config_pipeline", "manual"] },
+        "status":   { "$ref": "#/$defs/Status" }
+      }
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["concept", "planned", "confirmed", "active"]
+    }
+  }
+}

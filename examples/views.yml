@@ -1,0 +1,87 @@
+views:
+  # All sites collapsed to abstract nodes; only inter-site WAN links shown.
+  - name: wan-overview
+    detail_level: L0
+    scope:
+      collapse_sites: ["*"]
+      exclude_links: [role=oob, role=fabric, role=access]
+    validation_mode: strict
+    title:
+      text: Global WAN Overview
+      classification: Internal
+    legend: true
+
+  # LON-DC1 full detail; collapse other sites to show WAN context.
+  - name: emea-wan-detail
+    detail_level: L1
+    scope:
+      sites: [lon-dc1, lon-hub-01, nyc-dc1, sng-dc1]
+      collapse_sites: [nyc-dc1, sng-dc1]
+      exclude_links: [role=oob, role=fabric, role=access]
+      exclude_devices: [role=oob_switch]
+    validation_mode: strict
+    title:
+      text: EMEA WAN Detail
+      classification: Internal
+    legend: true
+
+  # DC fabric views — spine-leaf + uplinks, interfaces shown, OOB excluded.
+  - name: lon-dc1-fabric
+    detail_level: L2
+    connection_kinds: [physical]
+    connection_roles: [fabric, uplink]
+    scope:
+      focus_site: lon-dc1
+      exclude_devices: [role=oob_switch]
+    validation_mode: strict
+    title:
+      text: LON-DC1 Fabric Topology
+      classification: Internal
+
+  - name: nyc-dc1-fabric
+    detail_level: L2
+    connection_kinds: [physical]
+    connection_roles: [fabric, uplink]
+    scope:
+      focus_site: nyc-dc1
+      exclude_devices: [role=oob_switch]
+    validation_mode: strict
+    title:
+      text: NYC-DC1 Fabric Topology
+      classification: Internal
+
+  - name: sng-dc1-fabric
+    detail_level: L2
+    connection_kinds: [physical]
+    connection_roles: [fabric, uplink]
+    scope:
+      focus_site: sng-dc1
+      exclude_devices: [role=oob_switch]
+    validation_mode: warn
+    title:
+      text: SNG-DC1 Fabric Topology (expansion in progress)
+      classification: Internal
+
+  # BGP overlay — only spine and border_router roles, logical links only.
+  - name: global-bgp
+    detail_level: L1
+    connection_kinds: [logical]
+    scope:
+      sites: [lon-dc1, nyc-dc1, sng-dc1]
+      roles: [spine, border_router]
+    validation_mode: strict
+    title:
+      text: Global BGP Topology
+      classification: Restricted
+    legend: true
+
+  # Campus topology for the London HQ site.
+  - name: lon-hub-01-campus
+    detail_level: L2
+    connection_kinds: [physical]
+    scope:
+      focus_site: lon-hub-01
+    validation_mode: strict
+    title:
+      text: London HQ Campus Topology
+      classification: Internal

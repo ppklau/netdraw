@@ -1,0 +1,132 @@
+logical_links:
+  # ============================================================
+  # lon-dc1 — iBGP (spines and borders in full mesh)
+  # ============================================================
+  - a_end: lon-dc1-spine-01
+    z_end: lon-dc1-spine-02
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: lon-dc1-border-01
+    z_end: lon-dc1-spine-01
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: lon-dc1-border-01
+    z_end: lon-dc1-spine-02
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: lon-dc1-border-02
+    z_end: lon-dc1-spine-01
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: lon-dc1-border-02
+    z_end: lon-dc1-spine-02
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  # ============================================================
+  # nyc-dc1 — iBGP
+  # ============================================================
+  - a_end: nyc-dc1-spine-01
+    z_end: nyc-dc1-spine-02
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: nyc-dc1-border-01
+    z_end: nyc-dc1-spine-01
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: nyc-dc1-border-01
+    z_end: nyc-dc1-spine-02
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  # ============================================================
+  # sng-dc1 — iBGP
+  # ============================================================
+  - a_end: sng-dc1-spine-01
+    z_end: sng-dc1-spine-02
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: sng-dc1-border-01
+    z_end: sng-dc1-spine-01
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: sng-dc1-border-01
+    z_end: sng-dc1-spine-02
+    kind: logical
+    role: ibgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  # ============================================================
+  # eBGP — inter-site peerings between border routers
+  # ============================================================
+  - a_end: lon-dc1-border-01
+    z_end: nyc-dc1-border-01
+    kind: logical
+    role: ebgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: lon-dc1-border-02
+    z_end: nyc-dc1-border-01
+    kind: logical
+    role: ebgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: lon-dc1-border-01
+    z_end: sng-dc1-border-01
+    kind: logical
+    role: ebgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active
+
+  - a_end: nyc-dc1-border-01
+    z_end: sng-dc1-border-01
+    kind: logical
+    role: ebgp_peering
+    protocol: bgp
+    source: config_pipeline
+    status: active

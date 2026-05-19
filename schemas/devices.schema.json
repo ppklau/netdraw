@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/ppklau/netdraw/schemas/devices.schema.json",
+  "title": "NetDraw devices.yml",
+  "type": "object",
+  "required": ["devices"],
+  "additionalProperties": false,
+  "properties": {
+    "devices": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Device" }
+    }
+  },
+  "$defs": {
+    "Device": {
+      "type": "object",
+      "required": ["name", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "name":   { "type": "string", "minLength": 1 },
+        "role":   { "type": "string" },
+        "vendor": { "type": "string" },
+        "model":  { "type": "string" },
+        "site":   { "type": "string" },
+        "status": { "$ref": "#/$defs/Status" }
+      }
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["concept", "planned", "confirmed", "active"]
+    }
+  }
+}

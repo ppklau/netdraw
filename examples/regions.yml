@@ -1,0 +1,9 @@
+regions:
+  - name: emea
+    status: active
+
+  - name: amer
+    status: active
+
+  - name: apac
+    status: active

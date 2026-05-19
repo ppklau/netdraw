@@ -1,0 +1,19 @@
+# Build output
+/netdraw
+/dist/
+
+# Go
+*.test
+*.out
+vendor/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Temp files
+/tmp/

@@ -1,0 +1,143 @@
+{
+  "name": "netdraw-icons",
+  "version": "0.1.0",
+  "license": "MIT",
+  "viewBox": "0 0 48 48",
+  "strokeWidth": 2,
+  "description": "Vendor-neutral, MIT-licensed SVG network icons. All artwork original — no vendor IP.",
+  "icons": [
+    {
+      "id": "router",
+      "file": "router.svg",
+      "category": "device",
+      "priority": "P1",
+      "description": "Generic router — circle with bi-directional cross arrows inside (R3 cross-through)."
+    },
+    {
+      "id": "layer2-switch",
+      "file": "layer2-switch.svg",
+      "category": "device",
+      "priority": "P1",
+      "description": "Layer 2 switch — chassis with port lines and a horizontal bi-directional arrow above."
+    },
+    {
+      "id": "layer3-switch",
+      "file": "layer3-switch.svg",
+      "category": "device",
+      "priority": "P1",
+      "description": "Layer 3 switch — chassis with port lines and an L-bent routing arrow above."
+    },
+    {
+      "id": "firewall",
+      "file": "firewall.svg",
+      "category": "device",
+      "priority": "P1",
+      "description": "Firewall — brick-wall motif."
+    },
+    {
+      "id": "load-balancer",
+      "file": "load-balancer.svg",
+      "category": "device",
+      "priority": "P1",
+      "description": "Load balancer / ADC — input feeding a hub that fans out to three back-ends."
+    },
+    {
+      "id": "wireless-ap",
+      "file": "wireless-ap.svg",
+      "category": "device",
+      "priority": "P1",
+      "description": "Wireless access point — dome with three radiating Wi-Fi arcs."
+    },
+    {
+      "id": "server",
+      "file": "server.svg",
+      "category": "compute",
+      "priority": "P1",
+      "description": "Physical server — vertical chassis with drive-bay dividers and indicator LEDs."
+    },
+    {
+      "id": "hypervisor",
+      "file": "hypervisor.svg",
+      "category": "compute",
+      "priority": "P1",
+      "description": "Hypervisor host — server silhouette with a stacked VM overlay."
+    },
+    {
+      "id": "storage",
+      "file": "storage.svg",
+      "category": "compute",
+      "priority": "P1",
+      "description": "Storage array — wide rack with drive-bay divisions and indicator LEDs."
+    },
+    {
+      "id": "laptop",
+      "file": "laptop.svg",
+      "category": "compute",
+      "priority": "P1",
+      "description": "End user / laptop — lid above a trapezoidal keyboard base."
+    },
+    {
+      "id": "datacenter",
+      "file": "datacenter.svg",
+      "category": "site",
+      "priority": "P1",
+      "description": "Data centre — large industrial building with floor lines and a wide entry."
+    },
+    {
+      "id": "branch-office",
+      "file": "branch-office.svg",
+      "category": "site",
+      "priority": "P1",
+      "description": "Branch office — small pitched-roof building with a single door."
+    },
+    {
+      "id": "cloud-generic",
+      "file": "cloud-generic.svg",
+      "category": "site",
+      "priority": "P1",
+      "description": "Generic cloud — puffy outline for WAN abstraction and generic cloud platforms."
+    },
+    {
+      "id": "internet",
+      "file": "internet.svg",
+      "category": "site",
+      "priority": "P1",
+      "description": "Internet — globe with equator, prime meridian, and a side meridian for depth."
+    },
+    {
+      "id": "wan-cloud",
+      "file": "wan-cloud.svg",
+      "category": "construct",
+      "priority": "P1",
+      "description": "WAN / MPLS carrier cloud — cloud outline with a 3-node mesh interior."
+    },
+    {
+      "id": "modifier-ha",
+      "file": "modifier-ha.svg",
+      "category": "modifier",
+      "priority": "P1",
+      "description": "HA / redundant pair overlay — two short parallel bars, bottom-right."
+    },
+    {
+      "id": "modifier-virtual",
+      "file": "modifier-virtual.svg",
+      "category": "modifier",
+      "priority": "P1",
+      "description": "Virtual instance overlay — dashed bounding box inset from canvas edge."
+    },
+    {
+      "id": "modifier-alert",
+      "file": "modifier-alert.svg",
+      "category": "modifier",
+      "priority": "P1",
+      "description": "Alert / SPOF overlay — small triangle with exclamation, top-right."
+    },
+    {
+      "id": "modifier-planned",
+      "file": "modifier-planned.svg",
+      "category": "modifier",
+      "priority": "P1",
+      "description": "Planned / not built — no overlay glyph; renderer toggles stroke-dasharray."
+    }
+  ]
+}

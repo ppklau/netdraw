@@ -1,0 +1,22 @@
+views:
+  - name: hld-global
+    detail_level: L1
+    connection_kinds: [physical]
+    scope:
+      sites: [london-dc, nyc-dc, sng-dc]
+    validation_mode: strict
+    title:
+      text: Global Network HLD
+      classification: Draft
+    legend: true
+
+  - name: hld-wan
+    detail_level: L0
+    scope:
+      collapse_sites: ["*"]
+      exclude_links: [role=fabric]
+    validation_mode: strict
+    title:
+      text: Global WAN HLD
+      classification: Draft
+    legend: true

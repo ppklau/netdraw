@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/ppklau/netdraw/schemas/sites.schema.json",
+  "title": "NetDraw sites.yml",
+  "type": "object",
+  "required": ["sites"],
+  "additionalProperties": false,
+  "properties": {
+    "sites": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Site" }
+    }
+  },
+  "$defs": {
+    "Site": {
+      "type": "object",
+      "required": ["name", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "name":   { "type": "string", "minLength": 1 },
+        "type":   { "type": "string" },
+        "region": { "type": "string" },
+        "status": { "$ref": "#/$defs/Status" }
+      }
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["concept", "planned", "confirmed", "active"]
+    }
+  }
+}

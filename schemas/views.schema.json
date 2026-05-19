@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/ppklau/netdraw/schemas/views.schema.json",
+  "title": "NetDraw views.yml",
+  "type": "object",
+  "required": ["views"],
+  "additionalProperties": false,
+  "properties": {
+    "views": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/View" }
+    }
+  },
+  "$defs": {
+    "View": {
+      "type": "object",
+      "required": ["name", "detail_level"],
+      "additionalProperties": false,
+      "properties": {
+        "name":             { "type": "string", "minLength": 1 },
+        "detail_level":     { "type": "string", "enum": ["L0", "L1", "L2", "L3"] },
+        "connection_kinds": { "type": "array", "items": { "type": "string" } },
+        "connection_roles": { "type": "array", "items": { "type": "string" } },
+        "validation_mode":  { "type": "string", "enum": ["strict", "warn"] },
+        "legend":           { "type": "boolean" },
+        "scope":            { "$ref": "#/$defs/Scope" },
+        "title":            { "$ref": "#/$defs/Title" }
+      }
+    },
+    "Scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sites":          { "type": "array", "items": { "type": "string" } },
+        "roles":          { "type": "array", "items": { "type": "string" } },
+        "focus_site":     { "type": "string" },
+        "collapse_sites": { "type": "array", "items": { "type": "string" } },
+        "exclude_links":  { "type": "array", "items": { "type": "string" } },
+        "exclude_devices":{ "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "Title": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text":           { "type": "string" },
+        "classification": { "type": "string" }
+      }
+    }
+  }
+}

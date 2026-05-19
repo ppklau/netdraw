@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/ppklau/netdraw/schemas/regions.schema.json",
+  "title": "NetDraw regions.yml",
+  "type": "object",
+  "required": ["regions"],
+  "additionalProperties": false,
+  "properties": {
+    "regions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Region" }
+    }
+  },
+  "$defs": {
+    "Region": {
+      "type": "object",
+      "required": ["name", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "name":   { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/Status" }
+      }
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["concept", "planned", "confirmed", "active"]
+    }
+  }
+}

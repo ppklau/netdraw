@@ -1,0 +1,242 @@
+devices:
+  # --- lon-dc1 (EMEA primary datacenter) ---
+  - name: lon-dc1-border-01
+    role: border_router
+    vendor: arista
+    model: 7280R3-48FGP2
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-border-02
+    role: border_router
+    vendor: arista
+    model: 7280R3-48FGP2
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-spine-01
+    role: spine
+    vendor: arista
+    model: 7050CX3-32S
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-spine-02
+    role: spine
+    vendor: arista
+    model: 7050CX3-32S
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-leaf-01
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-leaf-02
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-leaf-03
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-leaf-04
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-fw-01
+    role: firewall
+    vendor: fortinet
+    model: FortiGate-3200F
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-fw-02
+    role: firewall
+    vendor: fortinet
+    model: FortiGate-3200F
+    site: lon-dc1
+    status: active
+
+  - name: lon-dc1-oob-01
+    role: oob_switch
+    vendor: cisco
+    model: Catalyst-2960X-48TS-L
+    site: lon-dc1
+    status: active
+
+  # --- nyc-dc1 (AMER primary datacenter) ---
+  - name: nyc-dc1-border-01
+    role: border_router
+    vendor: arista
+    model: 7280R3-48FGP2
+    site: nyc-dc1
+    status: active
+
+  - name: nyc-dc1-spine-01
+    role: spine
+    vendor: arista
+    model: 7050CX3-32S
+    site: nyc-dc1
+    status: active
+
+  - name: nyc-dc1-spine-02
+    role: spine
+    vendor: arista
+    model: 7050CX3-32S
+    site: nyc-dc1
+    status: active
+
+  - name: nyc-dc1-leaf-01
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: nyc-dc1
+    status: active
+
+  - name: nyc-dc1-leaf-02
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: nyc-dc1
+    status: active
+
+  - name: nyc-dc1-leaf-03
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: nyc-dc1
+    status: active
+
+  - name: nyc-dc1-fw-01
+    role: firewall
+    vendor: palo_alto
+    model: PA-5220
+    site: nyc-dc1
+    status: active
+
+  - name: nyc-dc1-fw-02
+    role: firewall
+    vendor: palo_alto
+    model: PA-5220
+    site: nyc-dc1
+    status: active
+
+  - name: nyc-dc1-oob-01
+    role: oob_switch
+    vendor: cisco
+    model: Catalyst-2960X-24TS-L
+    site: nyc-dc1
+    status: active
+
+  # --- sng-dc1 (APAC primary datacenter) ---
+  - name: sng-dc1-border-01
+    role: border_router
+    vendor: arista
+    model: 7280R3-48FGP2
+    site: sng-dc1
+    status: active
+
+  - name: sng-dc1-spine-01
+    role: spine
+    vendor: arista
+    model: 7050CX3-32S
+    site: sng-dc1
+    status: active
+
+  - name: sng-dc1-spine-02
+    role: spine
+    vendor: arista
+    model: 7050CX3-32S
+    site: sng-dc1
+    status: active
+
+  - name: sng-dc1-leaf-01
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: sng-dc1
+    status: active
+
+  - name: sng-dc1-leaf-02
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: sng-dc1
+    status: active
+
+  - name: sng-dc1-leaf-03
+    role: leaf
+    vendor: arista
+    model: 7050CX3-32S
+    site: sng-dc1
+    status: planned
+
+  - name: sng-dc1-fw-01
+    role: firewall
+    vendor: palo_alto
+    model: PA-3220
+    site: sng-dc1
+    status: active
+
+  - name: sng-dc1-oob-01
+    role: oob_switch
+    vendor: cisco
+    model: Catalyst-2960X-24TS-L
+    site: sng-dc1
+    status: active
+
+  # --- lon-hub-01 (London HQ campus) ---
+  - name: lon-hub-01-rtr-01
+    role: edge_router
+    vendor: cisco
+    model: ISR-4451-X
+    site: lon-hub-01
+    status: active
+
+  - name: lon-hub-01-fw-01
+    role: firewall
+    vendor: cisco
+    model: FTD-2110
+    site: lon-hub-01
+    status: active
+
+  - name: lon-hub-01-core-01
+    role: core_switch
+    vendor: cisco
+    model: Catalyst-9300-48P
+    site: lon-hub-01
+    status: active
+
+  - name: lon-hub-01-core-02
+    role: core_switch
+    vendor: cisco
+    model: Catalyst-9300-48P
+    site: lon-hub-01
+    status: active
+
+  - name: lon-hub-01-acc-01
+    role: access_switch
+    vendor: cisco
+    model: Catalyst-9200-48P
+    site: lon-hub-01
+    status: active
+
+  - name: lon-hub-01-acc-02
+    role: access_switch
+    vendor: cisco
+    model: Catalyst-9200-48P
+    site: lon-hub-01
+    status: active

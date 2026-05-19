@@ -1,0 +1,714 @@
+physical_links:
+  # ============================================================
+  # lon-dc1 — spine-leaf fabric (4 leaves × 2 spines)
+  # ============================================================
+  - a_end: lon-dc1-spine-01
+    z_end: lon-dc1-leaf-01
+    a_interface: Ethernet1
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-dc1-spine-01
+    z_end: lon-dc1-leaf-02
+    a_interface: Ethernet2
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-dc1-spine-01
+    z_end: lon-dc1-leaf-03
+    a_interface: Ethernet3
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-dc1-spine-01
+    z_end: lon-dc1-leaf-04
+    a_interface: Ethernet4
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-dc1-spine-02
+    z_end: lon-dc1-leaf-01
+    a_interface: Ethernet1
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-dc1-spine-02
+    z_end: lon-dc1-leaf-02
+    a_interface: Ethernet2
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-dc1-spine-02
+    z_end: lon-dc1-leaf-03
+    a_interface: Ethernet3
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-dc1-spine-02
+    z_end: lon-dc1-leaf-04
+    a_interface: Ethernet4
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  # lon-dc1 — border uplinks to spines (2 borders × 2 spines)
+  - a_end: lon-dc1-border-01
+    z_end: lon-dc1-spine-01
+    a_interface: Ethernet49
+    z_interface: Ethernet49
+    kind: physical
+    role: uplink
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-border-01
+    z_end: lon-dc1-spine-02
+    a_interface: Ethernet50
+    z_interface: Ethernet49
+    kind: physical
+    role: uplink
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-border-02
+    z_end: lon-dc1-spine-01
+    a_interface: Ethernet49
+    z_interface: Ethernet50
+    kind: physical
+    role: uplink
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-border-02
+    z_end: lon-dc1-spine-02
+    a_interface: Ethernet50
+    z_interface: Ethernet50
+    kind: physical
+    role: uplink
+    speed: 10G
+    source: manual
+    status: active
+
+  # lon-dc1 — firewall uplinks to spines (HA pair, each spine-connected)
+  - a_end: lon-dc1-fw-01
+    z_end: lon-dc1-spine-01
+    a_interface: port1
+    z_interface: Ethernet5
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-fw-01
+    z_end: lon-dc1-spine-02
+    a_interface: port2
+    z_interface: Ethernet5
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-fw-02
+    z_end: lon-dc1-spine-01
+    a_interface: port1
+    z_interface: Ethernet6
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-fw-02
+    z_end: lon-dc1-spine-02
+    a_interface: port2
+    z_interface: Ethernet6
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  # lon-dc1 — OOB management
+  - a_end: lon-dc1-oob-01
+    z_end: lon-dc1-border-01
+    a_interface: GigabitEthernet0/1
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-oob-01
+    z_end: lon-dc1-border-02
+    a_interface: GigabitEthernet0/2
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-oob-01
+    z_end: lon-dc1-spine-01
+    a_interface: GigabitEthernet0/3
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-oob-01
+    z_end: lon-dc1-spine-02
+    a_interface: GigabitEthernet0/4
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-oob-01
+    z_end: lon-dc1-leaf-01
+    a_interface: GigabitEthernet0/5
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-oob-01
+    z_end: lon-dc1-leaf-02
+    a_interface: GigabitEthernet0/6
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-oob-01
+    z_end: lon-dc1-leaf-03
+    a_interface: GigabitEthernet0/7
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-oob-01
+    z_end: lon-dc1-leaf-04
+    a_interface: GigabitEthernet0/8
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  # ============================================================
+  # nyc-dc1 — spine-leaf fabric (3 leaves × 2 spines)
+  # ============================================================
+  - a_end: nyc-dc1-spine-01
+    z_end: nyc-dc1-leaf-01
+    a_interface: Ethernet1
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: nyc-dc1-spine-01
+    z_end: nyc-dc1-leaf-02
+    a_interface: Ethernet2
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: nyc-dc1-spine-01
+    z_end: nyc-dc1-leaf-03
+    a_interface: Ethernet3
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: nyc-dc1-spine-02
+    z_end: nyc-dc1-leaf-01
+    a_interface: Ethernet1
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: nyc-dc1-spine-02
+    z_end: nyc-dc1-leaf-02
+    a_interface: Ethernet2
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: nyc-dc1-spine-02
+    z_end: nyc-dc1-leaf-03
+    a_interface: Ethernet3
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  # nyc-dc1 — border uplinks to spines
+  - a_end: nyc-dc1-border-01
+    z_end: nyc-dc1-spine-01
+    a_interface: Ethernet49
+    z_interface: Ethernet49
+    kind: physical
+    role: uplink
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-border-01
+    z_end: nyc-dc1-spine-02
+    a_interface: Ethernet50
+    z_interface: Ethernet49
+    kind: physical
+    role: uplink
+    speed: 10G
+    source: manual
+    status: active
+
+  # nyc-dc1 — firewall uplinks to spines (Palo Alto HA pair)
+  - a_end: nyc-dc1-fw-01
+    z_end: nyc-dc1-spine-01
+    a_interface: ethernet1/1
+    z_interface: Ethernet5
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-fw-01
+    z_end: nyc-dc1-spine-02
+    a_interface: ethernet1/2
+    z_interface: Ethernet5
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-fw-02
+    z_end: nyc-dc1-spine-01
+    a_interface: ethernet1/1
+    z_interface: Ethernet6
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-fw-02
+    z_end: nyc-dc1-spine-02
+    a_interface: ethernet1/2
+    z_interface: Ethernet6
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  # nyc-dc1 — OOB management
+  - a_end: nyc-dc1-oob-01
+    z_end: nyc-dc1-border-01
+    a_interface: GigabitEthernet0/1
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-oob-01
+    z_end: nyc-dc1-spine-01
+    a_interface: GigabitEthernet0/2
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-oob-01
+    z_end: nyc-dc1-spine-02
+    a_interface: GigabitEthernet0/3
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-oob-01
+    z_end: nyc-dc1-leaf-01
+    a_interface: GigabitEthernet0/4
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-oob-01
+    z_end: nyc-dc1-leaf-02
+    a_interface: GigabitEthernet0/5
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-oob-01
+    z_end: nyc-dc1-leaf-03
+    a_interface: GigabitEthernet0/6
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  # ============================================================
+  # sng-dc1 — spine-leaf fabric (leaf-03 is planned expansion)
+  # ============================================================
+  - a_end: sng-dc1-spine-01
+    z_end: sng-dc1-leaf-01
+    a_interface: Ethernet1
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: sng-dc1-spine-01
+    z_end: sng-dc1-leaf-02
+    a_interface: Ethernet2
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: sng-dc1-spine-02
+    z_end: sng-dc1-leaf-01
+    a_interface: Ethernet1
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: sng-dc1-spine-02
+    z_end: sng-dc1-leaf-02
+    a_interface: Ethernet2
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: lldp_discovery
+    status: active
+
+  - a_end: sng-dc1-spine-01
+    z_end: sng-dc1-leaf-03
+    a_interface: Ethernet3
+    z_interface: Ethernet1
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: design_intent
+    status: planned
+
+  - a_end: sng-dc1-spine-02
+    z_end: sng-dc1-leaf-03
+    a_interface: Ethernet3
+    z_interface: Ethernet2
+    kind: physical
+    role: fabric
+    speed: 100G
+    source: design_intent
+    status: planned
+
+  # sng-dc1 — border uplinks to spines
+  - a_end: sng-dc1-border-01
+    z_end: sng-dc1-spine-01
+    a_interface: Ethernet49
+    z_interface: Ethernet49
+    kind: physical
+    role: uplink
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: sng-dc1-border-01
+    z_end: sng-dc1-spine-02
+    a_interface: Ethernet50
+    z_interface: Ethernet49
+    kind: physical
+    role: uplink
+    speed: 10G
+    source: manual
+    status: active
+
+  # sng-dc1 — firewall uplinks to spines
+  - a_end: sng-dc1-fw-01
+    z_end: sng-dc1-spine-01
+    a_interface: ethernet1/1
+    z_interface: Ethernet5
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  - a_end: sng-dc1-fw-01
+    z_end: sng-dc1-spine-02
+    a_interface: ethernet1/2
+    z_interface: Ethernet5
+    kind: physical
+    role: uplink
+    speed: 25G
+    source: manual
+    status: active
+
+  # sng-dc1 — OOB management
+  - a_end: sng-dc1-oob-01
+    z_end: sng-dc1-border-01
+    a_interface: GigabitEthernet0/1
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: sng-dc1-oob-01
+    z_end: sng-dc1-spine-01
+    a_interface: GigabitEthernet0/2
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: sng-dc1-oob-01
+    z_end: sng-dc1-spine-02
+    a_interface: GigabitEthernet0/3
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: sng-dc1-oob-01
+    z_end: sng-dc1-leaf-01
+    a_interface: GigabitEthernet0/4
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: sng-dc1-oob-01
+    z_end: sng-dc1-leaf-02
+    a_interface: GigabitEthernet0/5
+    z_interface: Management0
+    kind: physical
+    role: oob
+    speed: 1G
+    source: manual
+    status: active
+
+  # ============================================================
+  # lon-hub-01 campus topology
+  # ============================================================
+  - a_end: lon-hub-01-rtr-01
+    z_end: lon-hub-01-fw-01
+    a_interface: GigabitEthernet0/0/0
+    z_interface: GigabitEthernet0/0
+    kind: physical
+    role: uplink
+    speed: 1G
+    source: manual
+    status: active
+
+  - a_end: lon-hub-01-rtr-01
+    z_end: lon-hub-01-core-01
+    a_interface: GigabitEthernet0/0/1
+    z_interface: GigabitEthernet1/0/1
+    kind: physical
+    role: uplink
+    speed: 1G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-hub-01-rtr-01
+    z_end: lon-hub-01-core-02
+    a_interface: GigabitEthernet0/0/2
+    z_interface: GigabitEthernet1/0/1
+    kind: physical
+    role: uplink
+    speed: 1G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-hub-01-core-01
+    z_end: lon-hub-01-acc-01
+    a_interface: GigabitEthernet1/0/2
+    z_interface: GigabitEthernet0/1
+    kind: physical
+    role: access
+    speed: 1G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-hub-01-core-01
+    z_end: lon-hub-01-acc-02
+    a_interface: GigabitEthernet1/0/3
+    z_interface: GigabitEthernet0/1
+    kind: physical
+    role: access
+    speed: 1G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-hub-01-core-02
+    z_end: lon-hub-01-acc-01
+    a_interface: GigabitEthernet1/0/2
+    z_interface: GigabitEthernet0/2
+    kind: physical
+    role: access
+    speed: 1G
+    source: lldp_discovery
+    status: active
+
+  - a_end: lon-hub-01-core-02
+    z_end: lon-hub-01-acc-02
+    a_interface: GigabitEthernet1/0/3
+    z_interface: GigabitEthernet0/2
+    kind: physical
+    role: access
+    speed: 1G
+    source: lldp_discovery
+    status: active
+
+  # ============================================================
+  # WAN — inter-site links
+  # ============================================================
+  - a_end: lon-dc1-border-01
+    z_end: nyc-dc1-border-01
+    a_interface: Ethernet1
+    z_interface: Ethernet1
+    kind: physical
+    role: wan
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-border-02
+    z_end: nyc-dc1-border-01
+    a_interface: Ethernet1
+    z_interface: Ethernet2
+    kind: physical
+    role: wan
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: lon-dc1-border-01
+    z_end: sng-dc1-border-01
+    a_interface: Ethernet2
+    z_interface: Ethernet1
+    kind: physical
+    role: wan
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: nyc-dc1-border-01
+    z_end: sng-dc1-border-01
+    a_interface: Ethernet3
+    z_interface: Ethernet2
+    kind: physical
+    role: wan
+    speed: 10G
+    source: manual
+    status: active
+
+  - a_end: lon-hub-01-rtr-01
+    z_end: lon-dc1-border-01
+    a_interface: Serial0/1/0
+    z_interface: Ethernet3
+    kind: physical
+    role: wan
+    speed: 1G
+    source: manual
+    status: active

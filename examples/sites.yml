@@ -1,0 +1,20 @@
+sites:
+  - name: lon-dc1
+    type: datacenter
+    region: emea
+    status: active
+
+  - name: nyc-dc1
+    type: datacenter
+    region: amer
+    status: active
+
+  - name: sng-dc1
+    type: datacenter
+    region: apac
+    status: active
+
+  - name: lon-hub-01
+    type: campus
+    region: emea
+    status: active
