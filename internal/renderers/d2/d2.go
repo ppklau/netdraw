@@ -138,7 +138,7 @@ func Script(g *graph.Graph, v *views.View, _ map[string]layout.Position) string 
 	})
 
 	// showIfaces: endpoint labels (interface IDs) at L2/L3.
-	// showLinkRole: center role label at L1.
+	// showLinkRole: center role label for logical links at L1 (physical link role is conveyed by color/style).
 	showIfaces := v.DetailLevel == views.L2 || v.DetailLevel == views.L3
 	showLinkRole := v.DetailLevel == views.L1
 
@@ -154,9 +154,6 @@ func Script(g *graph.Graph, v *views.View, _ map[string]layout.Position) string 
 		}
 
 		fmt.Fprintf(&b, "%s -- %s {\n", aRef, zRef)
-		if showLinkRole && l.Role != "" {
-			fmt.Fprintf(&b, "  label: %q\n", l.Role)
-		}
 		if showIfaces {
 			if l.AInterface != "" {
 				fmt.Fprintf(&b, "  source-arrowhead.label: %q\n", l.AInterface)

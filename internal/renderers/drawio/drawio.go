@@ -286,6 +286,9 @@ func XML(g *graph.Graph, v *views.View, positions map[string]layout.Position) ([
 			"1", ap.X, ap.Y, abstractW, abstractH)
 	}
 
+	showIfaces := v.DetailLevel == views.L2 || v.DetailLevel == views.L3
+	showLinkRole := v.DetailLevel == views.L1
+
 	// Physical link edges (sorted for determinism)
 	physLinks := append([]schema.PhysicalLink(nil), g.PhysicalLinks...)
 	sort.Slice(physLinks, func(i, j int) bool {
@@ -295,8 +298,17 @@ func XML(g *graph.Graph, v *views.View, positions map[string]layout.Position) ([
 		return physLinks[i].ZEnd < physLinks[j].ZEnd
 	})
 	for _, l := range physLinks {
-		emitEdge(&b, "e_"+l.AEnd+"_"+l.ZEnd, physEdgeStyle(l.Role),
+		edgeID := "e_" + l.AEnd + "_" + l.ZEnd
+		emitEdge(&b, edgeID, "", physEdgeStyle(l.Role),
 			nodeID(l.AEnd, abstract), nodeID(l.ZEnd, abstract))
+		if showIfaces {
+			if l.AInterface != "" {
+				emitEdgeLabel(&b, edgeID+"_src", edgeID, l.AInterface, -0.8)
+			}
+			if l.ZInterface != "" {
+				emitEdgeLabel(&b, edgeID+"_dst", edgeID, l.ZInterface, 0.8)
+			}
+		}
 	}
 
 	// Logical link edges (sorted for determinism)
@@ -308,7 +320,12 @@ func XML(g *graph.Graph, v *views.View, positions map[string]layout.Position) ([
 		return logLinks[i].ZEnd < logLinks[j].ZEnd
 	})
 	for _, l := range logLinks {
-		emitEdge(&b, "le_"+l.AEnd+"_"+l.ZEnd, logEdgeStyle(l.Role),
+		edgeID := "le_" + l.AEnd + "_" + l.ZEnd
+		centerLabel := ""
+		if showLinkRole && l.Role != "" {
+			centerLabel = l.Role
+		}
+		emitEdge(&b, edgeID, centerLabel, logEdgeStyle(l.Role),
 			nodeID(l.AEnd, abstract), nodeID(l.ZEnd, abstract))
 	}
 
@@ -394,10 +411,20 @@ func emitVertex(b *strings.Builder, id, label, style, parent string, x, y, w, h 
 	b.WriteString("    </mxCell>\n")
 }
 
-func emitEdge(b *strings.Builder, id, style, source, target string) {
-	fmt.Fprintf(b, "    <mxCell id=%q style=%q edge=%q source=%q target=%q parent=%q>\n",
-		id, style, "1", source, target, "1")
+func emitEdge(b *strings.Builder, id, label, style, source, target string) {
+	fmt.Fprintf(b, "    <mxCell id=%q value=%q style=%q edge=%q source=%q target=%q parent=%q>\n",
+		id, attr(label), style, "1", source, target, "1")
 	b.WriteString("      <mxGeometry relative=\"1\" as=\"geometry\"/>\n")
+	b.WriteString("    </mxCell>\n")
+}
+
+// emitEdgeLabel emits a draw.io edge-label child cell.
+// x is the position along the edge: -1 = source end, 0 = centre, +1 = target end.
+func emitEdgeLabel(b *strings.Builder, id, parentID, text string, x float64) {
+	const style = "edgeLabel;resizable=0;html=1;align=center;verticalAlign=bottom;fontSize=9;"
+	fmt.Fprintf(b, "    <mxCell id=%q value=%q style=%q vertex=%q connectable=%q parent=%q>\n",
+		id, attr(text), style, "1", "0", parentID)
+	fmt.Fprintf(b, "      <mxGeometry x=\"%.2f\" relative=\"1\" as=\"geometry\"/>\n", x)
 	b.WriteString("    </mxCell>\n")
 }
 
