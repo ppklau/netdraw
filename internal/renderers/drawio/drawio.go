@@ -452,7 +452,7 @@ func deviceCellStyle(d schema.Device) string {
 
 func physEdgeStyle(role string) string {
 	stroke, width, dash := physLinkAttrs(role)
-	s := fmt.Sprintf("endArrow=none;strokeColor=%s;strokeWidth=%d;", stroke, width)
+	s := fmt.Sprintf("edgeStyle=none;endArrow=none;strokeColor=%s;strokeWidth=%d;", stroke, width)
 	if dash > 0 {
 		s += fmt.Sprintf("dashed=1;dashPattern=%d %d;", dash, dash)
 	}
@@ -460,7 +460,7 @@ func physEdgeStyle(role string) string {
 }
 
 func logEdgeStyle(role string) string {
-	return fmt.Sprintf("endArrow=none;strokeColor=%s;strokeWidth=1;dashed=1;dashPattern=5 5;", logLinkColor(role))
+	return fmt.Sprintf("edgeStyle=none;endArrow=none;strokeColor=%s;strokeWidth=1;dashed=1;dashPattern=5 5;", logLinkColor(role))
 }
 
 // physLinkAttrs mirrors the link styling from the D2 renderer for visual consistency.

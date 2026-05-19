@@ -15,7 +15,9 @@ import (
 	"oss.terrastruct.com/d2/d2layouts/d2dagrelayout"
 	"oss.terrastruct.com/d2/d2lib"
 	"oss.terrastruct.com/d2/d2renderers/d2svg"
+	"oss.terrastruct.com/d2/d2target"
 	d2log "oss.terrastruct.com/d2/lib/log"
+	"oss.terrastruct.com/d2/lib/geo"
 	"oss.terrastruct.com/d2/lib/textmeasure"
 
 	"github.com/ppklau/netdraw/internal/graph"
@@ -234,6 +236,65 @@ func Script(g *graph.Graph, v *views.View, _ map[string]layout.Position) string 
 	return b.String()
 }
 
+// straightenEdges recomputes every connection's route as a direct two-point line
+// between the facing borders of the source and destination shapes, then clears
+// IsCurve so the SVG renderer emits straight SVG paths instead of bezier curves.
+//
+// Dagre's bezier routing exits nodes from whichever side suits the curve, which
+// can be the "wrong" side for a straight line (e.g. a node exits rightward even
+// though the target is to the left). Recomputing from shape centers fixes this.
+func straightenEdges(diagram *d2target.Diagram) {
+	shapeMap := make(map[string]d2target.Shape, len(diagram.Shapes))
+	for _, s := range diagram.Shapes {
+		shapeMap[s.ID] = s
+	}
+
+	for i := range diagram.Connections {
+		c := &diagram.Connections[i]
+		c.IsCurve = false
+
+		src, srcOK := shapeMap[c.Src]
+		dst, dstOK := shapeMap[c.Dst]
+		if !srcOK || !dstOK {
+			if len(c.Route) > 2 {
+				c.Route = []*geo.Point{c.Route[0], c.Route[len(c.Route)-1]}
+			}
+			continue
+		}
+
+		srcCX := float64(src.Pos.X) + float64(src.Width)/2
+		srcCY := float64(src.Pos.Y) + float64(src.Height)/2
+		dstCX := float64(dst.Pos.X) + float64(dst.Width)/2
+		dstCY := float64(dst.Pos.Y) + float64(dst.Height)/2
+
+		p0 := shapeEdgePoint(srcCX, srcCY, dstCX, dstCY, float64(src.Width), float64(src.Height))
+		p1 := shapeEdgePoint(dstCX, dstCY, srcCX, srcCY, float64(dst.Width), float64(dst.Height))
+		c.Route = []*geo.Point{p0, p1}
+	}
+}
+
+// shapeEdgePoint returns the point on the axis-aligned bounding box of a shape
+// (centered at cx,cy with dimensions w×h) where the ray toward (tx,ty) exits.
+func shapeEdgePoint(cx, cy, tx, ty, w, h float64) *geo.Point {
+	dx, dy := tx-cx, ty-cy
+	if dx == 0 && dy == 0 {
+		return &geo.Point{X: cx, Y: cy}
+	}
+	hw, hh := w/2, h/2
+	var t float64 = math.MaxFloat64
+	if dx > 0 {
+		t = math.Min(t, hw/dx)
+	} else if dx < 0 {
+		t = math.Min(t, -hw/dx)
+	}
+	if dy > 0 {
+		t = math.Min(t, hh/dy)
+	} else if dy < 0 {
+		t = math.Min(t, -hh/dy)
+	}
+	return &geo.Point{X: cx + dx*t, Y: cy + dy*t}
+}
+
 // dagreLayout returns a dagre LayoutGraph with increased node separation so that
 // long device labels don't overlap between adjacent horizontally-placed nodes.
 func dagreLayout() d2graph.LayoutGraph {
@@ -277,6 +338,8 @@ func RenderSVG(ctx context.Context, script string) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("compiling D2 script: %w", err)
 	}
+
+	straightenEdges(diagram)
 
 	svg, err := d2svg.Render(diagram, renderOpts)
 	if err != nil {
