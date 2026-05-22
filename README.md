@@ -17,6 +17,14 @@ layout_overrides.yml    (optional: pinned positions from draw.io edits)
 
 Views are defined in `views.yml`. Each view specifies a detail level (L0–L3), a scope (which sites or roles to include), and filters (exclude OOB links, show only fabric, etc.). NetDraw generates one diagram per view.
 
+## What it produces
+
+LON-DC1 spine-leaf fabric — rendered from the [example SoT](examples/):
+
+![LON-DC1 Fabric Topology](docs/diagrams/lon-dc1-fabric.svg)
+
+See [docs/gallery.md](docs/gallery.md) for the full set of example views: WAN overview, multi-site WAN detail, BGP overlay, and campus topology.
+
 ## Installation
 
 Requires Go 1.24 or later.
