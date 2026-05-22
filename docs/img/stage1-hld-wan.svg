@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="240" font-family="system-ui,Arial,sans-serif">
+  <!-- Background -->
+  <rect width="580" height="240" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="290" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#0A0F25">WAN Architecture HLD</text>
+  <text x="290" y="48" text-anchor="middle" font-size="11" fill="#676C7E">Classification: Draft</text>
+
+  <!-- lon-dc2 cloud node -->
+  <g transform="translate(51, 90)">
+    <path d="M 25 29 C 25 30 24 31 23 31 C 10 32 0 43 0 57 C 0 72 11 84 25 84 H 121 C 136 84 149 71 149 56 C 149 41 138 29 123 28 C 122 28 121 27 121 26 C 118 11 103 0 86 0 C 75 0 64 5 58 12 C 57 13 56 13 55 13 C 53 12 50 12 47 12 C 35 12 26 19 25 29 Z"
+          fill="#ECEFF1" stroke="#90A4AE" stroke-width="1"/>
+    <text x="74.5" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#546E7A">lon-dc2</text>
+  </g>
+
+  <!-- ams-dc1 cloud node -->
+  <g transform="translate(381, 90)">
+    <path d="M 25 29 C 25 30 24 31 23 31 C 10 32 0 43 0 57 C 0 72 11 84 25 84 H 121 C 136 84 149 71 149 56 C 149 41 138 29 123 28 C 122 28 121 27 121 26 C 118 11 103 0 86 0 C 75 0 64 5 58 12 C 57 13 56 13 55 13 C 53 12 50 12 47 12 C 35 12 26 19 25 29 Z"
+          fill="#ECEFF1" stroke="#90A4AE" stroke-width="1"/>
+    <text x="74.5" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#546E7A">ams-dc1</text>
+  </g>
+
+  <!-- WAN link: right edge of lon-dc2 cloud to left edge of ams-dc1 cloud -->
+  <line x1="200" y1="132" x2="381" y2="132"
+        stroke="#E65100" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Legend -->
+  <rect x="415" y="190" width="150" height="38" fill="#FAFAFA" stroke="#BDBDBD" stroke-width="1"/>
+  <text x="490" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#0A0F25">Legend</text>
+  <line x1="430" y1="218" x2="450" y2="218" stroke="#E65100" stroke-width="3" stroke-linecap="round"/>
+  <text x="455" y="221" text-anchor="start" font-size="9" fill="#546E7A">wan (physical)</text>
+</svg>

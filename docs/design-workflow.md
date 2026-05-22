@@ -106,10 +106,14 @@ netdraw render --all       # produces diagrams/hld-wan.svg, diagrams/hld-sites.s
 - **`hld-wan.svg`** (L0): Two cloud nodes — `lon-dc2` and `ams-dc1` — connected by a
   WAN link. Sites are collapsed to abstract nodes. Clean, one-page WAN overview.
 
+![hld-wan.svg — L0 WAN overview: two cloud nodes connected by orange WAN link](img/stage1-hld-wan.svg)
+
 - **`hld-sites.svg`** (L1): Each site expanded to show role groups. Dashed-border
   rectangles labelled `spine ×4`, `leaf ×16`, `firewall ×1`, `border_router ×2`.
   All elements in concept-mode visual treatment: light grey fill, dashed borders,
   dotted links. Visually signals "sketch, not committed design."
+
+![hld-sites.svg — L1 site view: concept-mode role groups with dotted links](img/stage1-hld-sites.svg)
 
 The architect iterates on this in minutes — change leaf count, add an OOB tier,
 add a third site. Each file save re-renders in under a second with `netdraw watch`.
@@ -212,6 +216,12 @@ At `confirmed` status, diagrams render at **full colour and opacity**. Interface
 endpoint labels appear on L2 views. The visual treatment is indistinguishable from
 active devices — this is intentional: `confirmed` means "this is the real design."
 
+**`planned` (before interface assignment):**
+![Stage 2 planned — devices at 55% opacity, no interface labels](img/stage2-planned.svg)
+
+**`confirmed` (design signed off):**
+![Stage 2 confirmed — full colour with interface labels at L2](img/stage2-confirmed.svg)
+
 ### Artefacts handed to implementation engineers
 
 ```
@@ -266,6 +276,8 @@ A **mixed-status site** renders truthfully: `active` devices appear at full colo
 `planned` devices appear muted. The diagram is an accurate picture of what is
 deployed versus what is still incoming. This makes it useful for rollout tracking
 and sign-off — not just documentation after the fact.
+
+![Stage 3 rollout — active devices at full colour, planned devices muted](img/stage3-mixed.svg)
 
 ```bash
 netdraw validate --mode strict   # fails loudly if active devices are missing fields
@@ -325,6 +337,8 @@ The distinction is in the link syntax:
 borders, `spine ×4`, `leaf ×16`. The WAN links connecting them use concept-mode
 styling. The same views that already show the existing sites will now include SIN-DC1
 automatically if their scope matches (e.g. `sites: [lon-dc1, nyc-dc1, sin-dc1]`).
+
+![Expand overlay — existing active sites + concept sin-dc1 overlay](img/stage3-expand.svg)
 
 The validator treats cross-references as real — if `lon-dc1-border-01` isn't in the
 base adapter's device list, validation fails with a clear error rather than silently

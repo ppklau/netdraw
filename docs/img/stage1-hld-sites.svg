@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="450" font-family="system-ui,Arial,sans-serif">
+  <!-- Background -->
+  <rect width="740" height="450" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="370" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#0A0F25">Site Architecture HLD</text>
+  <text x="370" y="48" text-anchor="middle" font-size="11" fill="#676C7E">Classification: Draft</text>
+
+  <!-- lon-dc2 container -->
+  <rect x="15" y="55" width="320" height="370" fill="#FAFAFA" stroke="#BDBDBD" stroke-width="1"/>
+  <text x="175" y="74" text-anchor="middle" font-size="13" font-weight="bold" fill="#0A0F25">lon-dc2</text>
+
+  <!-- lon-dc2: border_router ×2 -->
+  <rect x="40" y="95" width="135" height="44" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="107" y="120" text-anchor="middle" font-size="11" fill="#78909C">border_router ×2</text>
+
+  <!-- lon-dc2: firewall ×1 -->
+  <rect x="195" y="95" width="115" height="44" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="252" y="120" text-anchor="middle" font-size="11" fill="#78909C">firewall ×1</text>
+
+  <!-- lon-dc2: spine ×4 -->
+  <rect x="40" y="175" width="270" height="44" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="175" y="200" text-anchor="middle" font-size="11" fill="#78909C">spine ×4</text>
+
+  <!-- lon-dc2: leaf ×16 -->
+  <rect x="40" y="300" width="270" height="44" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="175" y="325" text-anchor="middle" font-size="11" fill="#78909C">leaf ×16</text>
+
+  <!-- ams-dc1 container -->
+  <rect x="405" y="55" width="320" height="370" fill="#FAFAFA" stroke="#BDBDBD" stroke-width="1"/>
+  <text x="565" y="74" text-anchor="middle" font-size="13" font-weight="bold" fill="#0A0F25">ams-dc1</text>
+
+  <!-- ams-dc1: border_router ×2 -->
+  <rect x="430" y="95" width="135" height="44" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="497" y="120" text-anchor="middle" font-size="11" fill="#78909C">border_router ×2</text>
+
+  <!-- ams-dc1: firewall ×1 -->
+  <rect x="585" y="95" width="115" height="44" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="642" y="120" text-anchor="middle" font-size="11" fill="#78909C">firewall ×1</text>
+
+  <!-- ams-dc1: spine ×4 -->
+  <rect x="430" y="175" width="270" height="44" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="565" y="200" text-anchor="middle" font-size="11" fill="#78909C">spine ×4</text>
+
+  <!-- ams-dc1: leaf ×16 -->
+  <rect x="430" y="300" width="270" height="44" fill="#ECEFF1" stroke="#90A4AE" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="565" y="325" text-anchor="middle" font-size="11" fill="#78909C">leaf ×16</text>
+
+  <!-- Links: all concept style stroke=#B0BEC5, stroke-width=1, stroke-dasharray="3 3" -->
+
+  <!-- lon-dc2 border_router → firewall (uplink) -->
+  <line x1="175" y1="139" x2="195" y2="139"
+        stroke="#B0BEC5" stroke-width="1" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- lon-dc2 spine → leaf (fabric) -->
+  <line x1="175" y1="219" x2="175" y2="300"
+        stroke="#B0BEC5" stroke-width="1" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ams-dc1 border_router → firewall (uplink) -->
+  <line x1="565" y1="139" x2="585" y2="139"
+        stroke="#B0BEC5" stroke-width="1" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ams-dc1 spine → leaf (fabric) -->
+  <line x1="565" y1="219" x2="565" y2="300"
+        stroke="#B0BEC5" stroke-width="1" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- lon-dc2 border_router → ams-dc1 border_router (WAN, slightly bolder) -->
+  <line x1="175" y1="117" x2="430" y2="117"
+        stroke="#B0BEC5" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
